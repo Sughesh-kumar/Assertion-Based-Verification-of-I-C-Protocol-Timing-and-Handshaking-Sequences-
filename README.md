@@ -123,14 +123,14 @@ module i2c_tb;
 
     // Assertion for START condition: SDA must go LOW while SCL is HIGH
     property start_condition;
-        @(posedge CLK) (SCL && $fell(SDA)) |-> $display("START condition detected");
+        @(posedge CLK) (SCL && $fell(SDA));
     endproperty
     assert property (start_condition)
         else $error("START condition violated");
 
     // Assertion for STOP condition: SDA must go HIGH while SCL is HIGH
     property stop_condition;
-        @(posedge CLK) (SCL && $rose(SDA)) |-> $display("STOP condition detected");
+        @(posedge CLK) (SCL && $rose(SDA));
     endproperty
     assert property (stop_condition)
         else $error("STOP condition violated");
@@ -152,7 +152,11 @@ endmodule
 ```
 ### Simulation Output
 
------ Paste the output
+<img width="1919" height="928" alt="Screenshot 2025-11-16 220659" src="https://github.com/user-attachments/assets/28ce50c3-b1e5-4c5f-a1c1-cd4d9eb8cbc4" />
+
+
+<img width="1919" height="931" alt="Screenshot 2025-11-16 220721" src="https://github.com/user-attachments/assets/37d220ef-0c0a-418c-95fd-1907faddf959" />
+
 
 ### Result
 The Assertion-Based Verification of the I²C protocol timing and handshaking sequences was successfully carried out using SystemVerilog.Assertions effectively verified setup, hold, start, and stop conditions, ensuring reliable communication as per the I²C protocol specification.
